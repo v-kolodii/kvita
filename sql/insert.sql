@@ -13,145 +13,99 @@ USE `cabinet_of_ministers` ;
 -- Table `cabinet_of_ministers`.`cabmin`
 -- -----------------------------------------------------
 
-
-CREATE TABLE IF NOT EXISTS `cabinet_of_ministers`.`cabmin` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NULL,
-  `size` INT NULL,
-  `created_date` DATE NULL,
-  `finished_date` DATE NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
+INSERT INTO `cabinet_of_ministers`.`cabmin` (title, size, created_date)
+VALUES ('Cabinet of Ministers',10, CURRENT_TIMESTAMP);
 
 -- -----------------------------------------------------
 -- Table `cabinet_of_ministers`.`cabmin_powers`
 -- -----------------------------------------------------
 
-
-CREATE TABLE IF NOT EXISTS `cabinet_of_ministers`.`cabmin_powers` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `cabmin_id` INT NOT NULL,
-  `name` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_cabmin_powers_cabmin_idx` (`cabmin_id` ASC) VISIBLE,
-  CONSTRAINT `fk_cabmin_powers_cabmin`
-    FOREIGN KEY (`cabmin_id`)
-    REFERENCES `cabinet_of_ministers`.`cabmin` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+INSERT INTO `cabinet_of_ministers`.`cabmin_powers` (cabmin_id, name) VALUES (1,'Economic Development');
+INSERT INTO `cabinet_of_ministers`.`cabmin_powers` (cabmin_id, name) VALUES (1,'Human Capital Development');
+INSERT INTO `cabinet_of_ministers`.`cabmin_powers` (cabmin_id, name) VALUES (1,'National Security and Defense');
+INSERT INTO `cabinet_of_ministers`.`cabmin_powers` (cabmin_id, name) VALUES (1,'Corruption');
+INSERT INTO `cabinet_of_ministers`.`cabmin_powers` (cabmin_id, name) VALUES (1,'Rule of Law and Combating');
+INSERT INTO `cabinet_of_ministers`.`cabmin_powers` (cabmin_id, name) VALUES (1,'Good Governance');
 
 -- -----------------------------------------------------
 -- Table `cabinet_of_ministers`.`user`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `cabinet_of_ministers`.`user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(45) NOT NULL,
-  `first_name` VARCHAR(45) NULL,
-  `last_name` VARCHAR(45) NULL,
-  `phone` VARCHAR(45) NULL,
-  `address1` VARCHAR(45) NULL,
-  `address2` VARCHAR(45) NULL,
-  `political_affiliation` VARCHAR(45) NULL,
-  `birth_date` DATE NULL,
-  `committee_id` INT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+INSERT INTO `cabinet_of_ministers`.`user` (email, first_name,last_name,phone, address1, address2,political_affiliation,birth_date)
+VALUES ('Denys_Shmyhal@gov.ua', 'Denys', 'Shmyhal', '+380975566555', 'Kyiv', 'str. Yaroslaviv Val, 18', 'Minister of Ukraine', '1980-11-19');
 
+INSERT INTO `cabinet_of_ministers`.`user` (email, first_name,last_name,phone, address1, address2,political_affiliation,birth_date)
+VALUES ('Serhii_Marchenko@gov.ua', 'Serhii', 'Marchenko', '+380975566555', 'Kyiv', 'str. Yaroslaviv Val, 18', 'Minister of Ukraine', '1980-11-19');
+
+INSERT INTO `cabinet_of_ministers`.`user` (email, first_name,last_name,phone, address1, address2,political_affiliation,birth_date)
+VALUES ('Denys_Maliuska@gov.ua', 'Denys', 'Maliuska', '+380975566555', 'Kyiv', 'str. Yaroslaviv Val, 18', 'Minister of Ukraine', '1980-11-19');
+
+INSERT INTO `cabinet_of_ministers`.`user` (email, first_name,last_name,phone, address1, address2,political_affiliation,birth_date)
+VALUES ('Oksen_Lisovyi@gov.ua', 'Oksen', 'Lisovyi', '+380975566555', 'Kyiv', 'str. Yaroslaviv Val, 18', 'Minister of Ukraine', '1980-11-19');
+
+INSERT INTO `cabinet_of_ministers`.`user` (email, first_name,last_name,phone, address1, address2,political_affiliation,birth_date)
+VALUES ('Ihor_Klymenko@gov.ua', 'Ihor', 'Klymenko', '+380975566555', 'Kyiv', 'str. Yaroslaviv Val, 18', 'Minister of Ukraine', '1980-11-19');
+
+INSERT INTO `cabinet_of_ministers`.`user` (email, first_name,last_name,phone, address1, address2,political_affiliation,birth_date)
+VALUES ('Oksana_Zholnovych@gov.ua', 'Oksana', 'Zholnovych', '+380975566555', 'Kyiv', 'str. Yaroslaviv Val, 18', 'Minister of Ukraine', '1980-11-19');
+
+INSERT INTO `cabinet_of_ministers`.`user` (email, first_name,last_name,phone, address1, address2,political_affiliation,birth_date)
+VALUES ('Oleksandr_Tkachenko@gov.ua', 'Oleksandr', 'Tkachenko', '+380975566555', 'Kyiv', 'str. Yaroslaviv Val, 18', 'Minister of Ukraine', '1980-11-19');
 
 -- -----------------------------------------------------
 -- Table `cabinet_of_ministers`.`minister`
 -- -----------------------------------------------------
+INSERT INTO `cabinet_of_ministers`.`minister` (user_id, title, description, appointed_date, finished_date, cabmin_id)
+VALUES (1, 'Minister', 'Minister of Environmental Protection and Natural Resources of Ukraine', '2022-11-11', NULL, 1);
 
+INSERT INTO `cabinet_of_ministers`.`minister` (user_id, title, description, appointed_date, finished_date, cabmin_id)
+VALUES (2, 'Minister', 'Minister of Agrarian Policy and Food of Ukraine', '2022-11-11', NULL, 1);
 
-CREATE TABLE IF NOT EXISTS `cabinet_of_ministers`.`minister` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `user_id` INT NOT NULL,
-  `title` VARCHAR(45) NULL,
-  `description` VARCHAR(256) NULL,
-  `appointed_date` DATE NULL,
-  `finished_date` DATE NULL,
-  `cabmin_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_minister_user1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_minister_cabmin1_idx` (`cabmin_id` ASC) VISIBLE,
-  CONSTRAINT `fk_minister_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `cabinet_of_ministers`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_minister_cabmin1`
-    FOREIGN KEY (`cabmin_id`)
-    REFERENCES `cabinet_of_ministers`.`cabmin` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+INSERT INTO `cabinet_of_ministers`.`minister` (user_id, title, description, appointed_date, finished_date, cabmin_id)
+VALUES (3, 'Minister', 'Minister of Social Policy of Ukraine', '2022-11-11', NULL, 1);
 
+INSERT INTO `cabinet_of_ministers`.`minister` (user_id, title, description, appointed_date, finished_date, cabmin_id)
+VALUES (4, 'Minister', 'Minister for Strategic Industries of Ukraine', '2022-11-11', NULL, 1);
+
+INSERT INTO `cabinet_of_ministers`.`minister` (user_id, title, description, appointed_date, finished_date, cabmin_id)
+VALUES (5, 'Minister', 'Minister of Internal Affairs of Ukraine', '2022-11-11', NULL, 1);
+
+INSERT INTO `cabinet_of_ministers`.`minister` (user_id, title, description, appointed_date, finished_date, cabmin_id)
+VALUES (6, 'Minister', 'Minister of the Cabinet of Ministers of Ukraine', '2022-11-11', NULL, 1);
+
+INSERT INTO `cabinet_of_ministers`.`minister` (user_id, title, description, appointed_date, finished_date, cabmin_id)
+VALUES (7, 'Minister', 'Minister of Foreign Affairs of Ukraine', '2022-11-11', NULL, 1);
 
 -- -----------------------------------------------------
 -- Table `cabinet_of_ministers`.`committee`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `cabinet_of_ministers`.`committee` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `cabmin_id` INT NOT NULL,
-  `title` VARCHAR(45) NULL,
-  `description` VARCHAR(256) NULL,
-  `created_date` DATE NULL,
-  `finished_date` DATE NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_committee_cabmin1_idx` (`cabmin_id` ASC) VISIBLE,
-  CONSTRAINT `fk_committee_cabmin1`
-    FOREIGN KEY (`cabmin_id`)
-    REFERENCES `cabinet_of_ministers`.`cabmin` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+INSERT INTO `cabinet_of_ministers`.`committee` (cabmin_id, title, description, created_date)
+VALUES (1, 'Minister', 'Government Committee on Economic, Financial Policy, Fuel and Energy Complex, Strategic Industries, Development of Communities and Territories and Infrastructure', '2023-02-11');
 
 
 -- -----------------------------------------------------
 -- Table `cabinet_of_ministers`.`ministry`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `cabinet_of_ministers`.`ministry` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `minister_id` INT NOT NULL,
-  `title` VARCHAR(45) NULL,
-  `description` VARCHAR(256) NULL,
-  `budget` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_ministry_minister1_idx` (`minister_id` ASC) VISIBLE,
-  CONSTRAINT `fk_ministry_minister1`
-    FOREIGN KEY (`minister_id`)
-    REFERENCES `cabinet_of_ministers`.`minister` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+INSERT INTO `cabinet_of_ministers`.`ministry` (minister_id, title, description, budget)
+VALUES (1, 'Ministry of Energy of Ukraine', 'Ministry of Energy of Ukraine', '345678');
 
+INSERT INTO `cabinet_of_ministers`.`ministry` (minister_id, title, description, budget)
+VALUES (2, 'Ministry of Healthcare of Ukraine', 'Ministry of Healthcare of Ukraine', '345678');
+
+INSERT INTO `cabinet_of_ministers`.`ministry` (minister_id, title, description, budget)
+VALUES (3, 'Ministry of Education and Science of Ukraine', 'Ministry of Education and Science of Ukraine', '345678');
+
+INSERT INTO `cabinet_of_ministers`.`ministry` (minister_id, title, description, budget)
+VALUES (4, 'Ministry of Finance of Ukraine', 'Ministry of Finance of Ukraine', '345678');
+
+INSERT INTO `cabinet_of_ministers`.`ministry` (minister_id, title, description, budget)
+VALUES (5, 'Ministry of Environmental Protection', 'Ministry of Environmental Protection and Natural Resources of Ukraine', '345678');
 
 -- -----------------------------------------------------
 -- Table `cabinet_of_ministers`.`legislation`
 -- -----------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `cabinet_of_ministers`.`legislation` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `ministry_id` INT NOT NULL,
-  `title` VARCHAR(45) NULL,
-  `description` VARCHAR(256) NULL,
-  `type` INT NULL,
-  `status` INT NULL,
-  `created_date` DATE NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_legislation_ministry1_idx` (`ministry_id` ASC) VISIBLE,
-  CONSTRAINT `fk_legislation_ministry1`
-    FOREIGN KEY (`ministry_id`)
-    REFERENCES `cabinet_of_ministers`.`ministry` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

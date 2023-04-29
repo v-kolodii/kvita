@@ -49,10 +49,10 @@ require_once 'db/databaseconnect.php';
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ministers</a>
+                        <a class="nav-link" href="ministers.php">Ministers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Commitees</a>
+                        <a class="nav-link" href="committee.php">Committees</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.kmu.gov.ua/" target="_blank">
@@ -68,10 +68,3 @@ require_once 'db/databaseconnect.php';
         </div>
     </nav>
 </header>
-
-
-<!--<nav>-->
-<!--    <ul>-->
-<!--        <li><a href="/">Home</a></li>-->
-<!--    </ul>-->
-<!--</nav>-->
