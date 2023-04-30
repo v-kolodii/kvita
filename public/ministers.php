@@ -3,7 +3,7 @@
 <main class="flex-shrink-0">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 mb-5">
 
                 <?php
                 if(isset($mysqli)) {
@@ -19,7 +19,7 @@
                         $sql = sprintf("SELECT minister.id, minister.description, 
                                                     minister.appointed_date, 
                                                     user.first_name, user.last_name, 
-                                                    user.phone 
+                                                    user.phone, finished_date 
                                                 FROM minister 
                                                 INNER JOIN user ON minister.user_id = user.id
                                                 WHERE cabmin_id = %d", $id);
@@ -29,12 +29,13 @@
                             // output data of each row
                             echo "<h2>Ministers: </h2>";
                             echo '<table class="table table-bordered">';
-                            echo "<tr>	<td>Name</td>
-                                    <td>Description</td>
+                            echo '<tr>	<td>Name</td>
+                                    <td style="width: 25%">Description</td>
                                     <td>Appointed Date</td>
+                                    <td>Finished Date</td>
                                     <td>Phone</td>
                                     <td>Action</td>
-                                    </tr>";
+                                    </tr>';
 
                             while($row = $result->fetch_assoc()) {
                             $edit = sprintf('<a href="edit_minister.php?id=%s">Edit</a>', $row["id"]);
@@ -44,10 +45,12 @@
                                         <td>%s</td> 
                                         <td>%s</td>
                                         <td>%s</td>
+                                        <td>%s</td>
                                         </tr>\n",
                                     $row["first_name"] .' '. $row["last_name"],
                                     $row["description"],
                                     $row["appointed_date"],
+                                    $row["finished_date"],
                                     $row["phone"],
                                 $edit);
                             }
@@ -59,6 +62,7 @@
                     $mysqli -> close();
                 }
                 ?>
+                <a type="button" href="add_minister.php" class="btn btn-primary">Add Minister</a>
             </div>
             <?php include "templates/sidebar.php"?>
         </div>

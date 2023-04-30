@@ -30,6 +30,46 @@ require_once 'db/databaseconnect.php';
             }
         }
 
+        .bunners {
+            padding-left: 40px;
+            padding-right: 40px;
+            background-color: #f4f7fa;
+            padding-bottom: 20px;
+            padding-top: 25px;
+        }
+
+        .bunners .bunner {
+            display: block;
+            width: 565px;
+            height: 290px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .banners-2 .bunner:nth-child(1) {
+            margin-right: 10px;
+        }
+        .banners-2 .bunner {
+            float: left;
+        }
+
+        .weather {
+            position: absolute;
+        }
+
+        .weather .sin-informer {
+            width: 240px !important;
+            margin-top: 60px;
+        }
+
+        body {
+            /*background: linear-gradient(90deg, rgba(2,0,32,0) 0%, rgba(255,215,0,0.2525603991596639) 2%, rgba(0,87,184,0.1909357492997199) 100%)*/
+            background: rgb(2,0,32);
+            background: linear-gradient(90deg, rgba(2,0,32,0) 0%, rgba(255,215,0,0.05087972689075626) 0%, rgba(0,87,184,0.022868522408963532) 86%);
+        }
     </style>
     <link href="../sticky-footer-navbar.css" rel="stylesheet">
 </head>
@@ -39,7 +79,7 @@ require_once 'db/databaseconnect.php';
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Government</a>
+            <a class="navbar-brand" href="/">Government Editor</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

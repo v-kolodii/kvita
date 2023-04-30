@@ -22,11 +22,11 @@
                             // output data of each row
                             echo "<h2>Committees: </h2>";
                             echo '<table class="table table-bordered">';
-                            echo "<tr><td>Title</td>
-                                    <td>Description</td>
+                            echo '<tr><td>Title</td>
+                                    <td style="width: 50%">Description</td>
                                     <td>Created date</td>
                                     <td>Finished date</td>
-                                    </tr>";
+                                    </tr>';
 
                             while($row = $result->fetch_assoc()) {
                                 printf("<tr>
@@ -34,7 +34,6 @@
                                         <td>%s</td> 
                                         <td>%s</td> 
                                         <td>%s</td>
-                                        
                                         </tr>\n",
                                     $row["title"],
                                     $row["description"],

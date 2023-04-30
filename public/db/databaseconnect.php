@@ -6,6 +6,8 @@ $password = getenv('MYSQL_PASSWORD');
 $port = getenv('MYSQL_PORT');
 $name = getenv('DOCKER_PROJECT_NAME');
 $hostname = 'mysql8-container-' . $name;
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $mysqli = new mysqli($hostname,$username,$password,$database, $port);
 
 //$db = new PDO('mysql:host=mysql8-container-my_app;port=3306;dbname=cabinet_of_ministers', $username, $password);
